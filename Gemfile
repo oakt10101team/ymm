@@ -13,6 +13,8 @@ gem 'haml'
 # gem for authentication
 gem 'devise'
 
+gem 'simple_form'
+
 # Admin panel
 gem 'activeadmin', github: 'activeadmin'
 

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant_id: 1
+  dish: MyString
+  delivery_time: 2014-09-21 22:10:04
+  delivery_date: 2014-09-21
+  customer_phone: MyString
+  customer_address: MyString
+  order_status: MyString
+
+two:
+  restaurant_id: 1
+  dish: MyString
+  delivery_time: 2014-09-21 22:10:04
+  delivery_date: 2014-09-21
+  customer_phone: MyString
+  customer_address: MyString
+  order_status: MyString

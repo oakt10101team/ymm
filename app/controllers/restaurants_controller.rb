@@ -1,10 +1,13 @@
 class RestaurantsController < ApplicationController
 
-	before_action :authenticate_user!, only: [:create, :new, :edit, :update]
+	before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
 
 	def index
-    @restaurants = current_user.restaurants.all
-
+    if current_user
+      @restaurants = current_user.restaurants.all
+    else
+      @restaurants = Restaurant.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restaurants }

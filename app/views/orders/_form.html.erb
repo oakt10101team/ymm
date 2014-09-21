@@ -1,0 +1,17 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :restaurant_id %>
+    <%= f.input :dish %>
+    <%= f.input :delivery_time %>
+    <%= f.input :delivery_date %>
+    <%= f.input :customer_phone %>
+    <%= f.input :customer_address %>
+    <%= f.input :order_status %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

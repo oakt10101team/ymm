@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @order.restaurant_id %>
+</p>
+
+<p>
+  <strong>Dish:</strong>
+  <%= @order.dish %>
+</p>
+
+<p>
+  <strong>Delivery time:</strong>
+  <%= @order.delivery_time %>
+</p>
+
+<p>
+  <strong>Delivery date:</strong>
+  <%= @order.delivery_date %>
+</p>
+
+<p>
+  <strong>Customer phone:</strong>
+  <%= @order.customer_phone %>
+</p>
+
+<p>
+  <strong>Customer address:</strong>
+  <%= @order.customer_address %>
+</p>
+
+<p>
+  <strong>Order status:</strong>
+  <%= @order.order_status %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

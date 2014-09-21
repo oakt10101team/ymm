@@ -15,6 +15,8 @@ gem 'devise'
 
 gem 'simple_form'
 
+gem 'best_in_place', github: 'bernat/best_in_place'
+
 # Admin panel
 gem 'activeadmin', github: 'activeadmin'
 

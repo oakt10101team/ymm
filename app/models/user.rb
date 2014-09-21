@@ -4,5 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :rememberable, :trackable, :validatable
 
-  has_many :restaurants
+  has_many :restaurants, dependent: :destroy
+
+  def to_s
+  	"#{first_name} #{last_name}"
+  end
 end

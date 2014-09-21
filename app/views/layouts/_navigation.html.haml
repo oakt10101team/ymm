@@ -16,9 +16,9 @@
           %a{:href => "#page-top"}
         %li
           %a.page-scroll{:href => "#services"} Services
-        %li
-          %a.page-scroll{:href => restaurants_url} Restaurants
         - if current_user
+          %li
+            %a.page-scroll{:href => restaurants_url} Restaurants
           %li
             = link_to "My Orders", orders_url, class: "page-scroll"  
           %li

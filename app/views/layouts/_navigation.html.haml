@@ -1,0 +1,28 @@
+/ Navigation
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header.page-scroll
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.page-scroll{:href => "/"} Food Delivery
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li.hidden
+          %a{:href => "#page-top"}
+        %li
+          %a.page-scroll{:href => "#services"} Services
+        - if current_user
+          %li
+            = link_to "Sign Out", destroy_user_session_path, method: :delete, class: "page-scroll"
+        - else
+          %li  
+            = link_to 'LOGIN', new_user_session_path, class: "page-scroll"
+          %li
+            = link_to 'SIGN UP', new_user_registration_path, class: "page-scroll"
+    / /.navbar-collapse
+  / /.container-fluid

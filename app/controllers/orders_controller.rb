@@ -1,15 +1,11 @@
 class OrdersController  < ApplicationController
 
 	before_action :authenticate_admin_user!, only: [:create, :new, :edit, :destroy]
-	before_action :authenticate_user!, only: [:index, :show, :update]
+	before_action :authenticate_restaurant!, only: [:index, :show, :update]
 
 	def index
-		if params[:restaurant]
-			@restaurant = Restaurant.find(params[:restaurant])
-		  @orders = @restaurant.orders
-		else
-			@orders = Order.my_all_orders(current_user.restaurants.pluck(:id))
-		end
+		@orders = current_restaurant.orders
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }

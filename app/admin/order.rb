@@ -5,7 +5,7 @@ ActiveAdmin.register Order do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   permit_params :restaurant_id, :dish, :delivery_time, :delivery_date, :customer_phone, :customer_address, 
-                :order_status
+                :order_status, :appartment
   #
   # or
   #
@@ -27,7 +27,8 @@ ActiveAdmin.register Order do
     end           
     column :delivery_date             
     column :customer_phone             
-    column :customer_address             
+    column :appartment             
+    column :customer_address
     column :order_status             
     actions                   
   end  
@@ -36,9 +37,10 @@ ActiveAdmin.register Order do
     f.inputs "Order Details" do
       f.input :restaurant_id, as: :select, collection: Restaurant.all  
       f.input :dish
-      f.input :delivery_time
-      f.input :delivery_date
+      f.input :delivery_time, :as => :time_picker
+      f.input :delivery_date, :as => :datepicker
       f.input :customer_phone
+      f.input :appartment
       f.input :customer_address
       f.input :order_status, as: :select, collection: ["Ordered", "In Progress", "Delivered", "Undeliverable"]
     end

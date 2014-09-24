@@ -1,12 +1,10 @@
 class Restaurant < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :rememberable, :trackable, :validatable
+	
 	has_many :orders, dependent: :destroy
-	belongs_to :user
-
-	validates :name, presence: true
-	validates :category, presence: true
-	validates :address, presence: true
-	validates :city, presence: true
-	validates :country, presence: true
-	validates :zip, presence: true
+	has_many :categories
 
 end

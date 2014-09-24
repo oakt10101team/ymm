@@ -1,29 +1,138 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="panel panel-primary form-panel">
+      <div class="panel-heading form-panel-heading">
+        <h3 class="panel-title">Edit <%= resource_name.to_s.humanize %></h3>
+      </div>
+      <div class="panel-body"> 
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+          <% if devise_error_messages!.present? %>
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <%= devise_error_messages! %>
+            </div>
+          <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+          <div class="form-group">
+            <label for="user_fname" class="col-sm-4 control-label">
+              <%= f.label "Restaurant Name" %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+          </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+          <div class="form-group">
+            <label for="email" class="col-sm-4 control-label">
+              <%= f.label :email %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.email_field :email, class: "form-control" %>
+            </div>
+          </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+          <div class="form-group">
+            <label for="password" class="col-sm-4 control-label">
+              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+            </label>
+            <div class="col-sm-8">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+          <div class="form-group">
+            <label for="password" class="col-sm-4 control-label">
+              <%= f.label :password_confirmation %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+          <div class="form-group">
+            <label for="password" class="col-sm-4 control-label">
+              <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+            </label>
+            <div class="col-sm-8">
+            <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+          <div class="form-group">
+            <label for="user_lname" class="col-sm-4 control-label">
+              <%= f.label :phone %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.text_field :phone, class: "form-control" %>
+            </div>
+          </div>
 
-<h3>Cancel my account</h3>
+          <div class="form-group">
+            <label for="user_lname" class="col-sm-4 control-label">
+              <%= f.label :website %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.text_field :website, class: "form-control" %>
+            </div>
+          </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <div class="form-group">
+            <label for="user_lname" class="col-sm-4 control-label">
+              <%= f.label :address %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.text_field :address, class: "form-control" %>
+            </div>
+          </div>
 
-<%= link_to "Back", :back %>
+          <div class="form-group">
+            <label for="user_lname" class="col-sm-4 control-label">
+              <%= f.label :city %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.text_field :city, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="user_lname" class="col-sm-4 control-label">
+              <%= f.label :state %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.select :state, us_states, {}, { class: "form-control" } %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="user_lname" class="col-sm-4 control-label">
+              <%= f.label :zip %>
+            </label>
+            <div class="col-sm-8">
+            <%= f.text_field :zip, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-1">
+              <%= f.submit "Update", class: "btn btn-default" %>
+            </div>
+          </div>
+
+        <% end %>
+
+        <!-- <h3>Cancel my account</h3>
+
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
+      </div>
+    <div class="panel-footer" style="text-align: center">
+      <%= link_to "Back", :back %>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>

@@ -14,19 +14,17 @@
       %ul.nav.navbar-nav.navbar-right
         %li.hidden
           %a{:href => "#page-top"}
-        %li
-          %a.page-scroll{:href => "#services"} Services
-        - if current_user
-          %li
-            %a.page-scroll{:href => restaurants_url} Restaurants
+        - if current_restaurant
+          / %li
+          /   = link_to "Update Restaurant", edit_restaurant_registration_path
           %li
             = link_to "My Orders", orders_url, class: "page-scroll"  
           %li
-            = link_to "Sign Out", destroy_user_session_path, method: :delete, class: "page-scroll"
+            = link_to "Sign Out", destroy_restaurant_session_path, method: :delete, class: "page-scroll"
         - else
           %li  
-            = link_to 'LOGIN', new_user_session_path, class: "page-scroll"
+            = link_to 'LOGIN', new_restaurant_session_path, class: "page-scroll"
           %li
-            = link_to 'SIGN UP', new_user_registration_path, class: "page-scroll"
+            = link_to 'SIGN UP', new_restaurant_registration_path, class: "page-scroll"
     / /.navbar-collapse
   / /.container-fluid

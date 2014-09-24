@@ -1,6 +1,6 @@
 <div class="panel panel-primary form-panel">
   <div class="panel-heading form-panel-heading">
-    <h3 class="panel-title">Restaurants</h3>
+    <h3 class="panel-title">Orders Placed</h3>
   </div>
   <div class="panel-body">
     <table class="table table-bordered">
@@ -11,6 +11,7 @@
           <th>Delivery time</th>
           <th>Delivery date</th>
           <th>Customer phone</th>
+          <th>Customer appartment</th>
           <th>Customer address</th>
           <th>Order status</th>
         </tr>
@@ -24,6 +25,7 @@
             <td><%= order.delivery_time.strftime("%H:%M") %></td>
             <td><%= order.delivery_date %></td>
             <td><%= order.customer_phone %></td>
+            <td><%= order.appartment %></td>
             <td><%= order.customer_address %></td>
             <td><%= best_in_place order, :order_status, type: :select, collection: ["Ordered", "In Progress", "Delivered", "Undeliverable"] %></td>
           </tr>

@@ -13,6 +13,8 @@ gem 'haml'
 # gem for authentication
 gem 'devise'
 
+gem 'chosen-rails'
+
 gem 'simple_form'
 
 gem 'best_in_place', github: 'bernat/best_in_place'

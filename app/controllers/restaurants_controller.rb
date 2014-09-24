@@ -1,13 +1,9 @@
 class RestaurantsController < ApplicationController
 
-	before_action :authenticate_user!
+	before_action :authenticate_restaurant!
 
 	def index
-    # if current_user
-    @restaurants = current_user.restaurants.all
-    # else
-    #   @restaurants = Restaurant.all
-    # end
+    @restaurants = current_restaurant
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restaurants }
@@ -15,7 +11,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = current_user.restaurants.find(params[:id])
+    @restaurant = current_restaurant
 
     respond_to do |format|
       format.html # show.html.erb
@@ -33,7 +29,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = current_user.restaurants.find(params[:id])
+    @restaurant = current_restaurant
   end
 
   def create

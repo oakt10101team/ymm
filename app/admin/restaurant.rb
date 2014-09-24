@@ -4,7 +4,7 @@ ActiveAdmin.register Restaurant do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :user_id, :name, :category, :address, :city, :country, :zip
+  permit_params :name, :phone, :categories, :address, :city, :state, :zip, :email, :email, :password, :password_confirmation
   #
   # or
   #
@@ -16,27 +16,28 @@ ActiveAdmin.register Restaurant do
 
   actions :all
 
-  index do                            
-    column "User" do |restaurant|
-      restaurant.user
-    end                     
+  index do                                              
     column :name        
-    column :category  
+    column :email        
+    column :phone  
     column :address             
     column :city             
-    column :country             
+    column :state             
     column :zip             
     actions                   
   end  
 
   form do |f|
     f.inputs "Restaurant Details" do
-      f.input :user_id, as: :select, collection: User.all  
       f.input :name
-      f.input :category
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      f.input :phone;
+      # f.input :categories, as: :select, collection: Category.all
       f.input :address
       f.input :city
-      f.input :country
+      f.input :state
       f.input :zip
     end
     f.actions

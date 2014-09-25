@@ -18,8 +18,8 @@ ActiveAdmin.register Order do
   actions :all
 
   index do                            
-    column "Orders" do |order|
-      order.restaurant.name
+    column "Restaurant" do |order|
+      order.try(:restaurant).try(:name)
     end                     
     column :dish        
     column :delivery_time, :sortable => :delivery_time do |r|
@@ -27,8 +27,8 @@ ActiveAdmin.register Order do
     end           
     column :delivery_date             
     column :customer_phone             
-    column :appartment             
-    column :customer_address
+    # column :appartment             
+    # column :customer_address
     column :order_status             
     actions                   
   end  
@@ -47,5 +47,19 @@ ActiveAdmin.register Order do
     f.actions
   end
 
+
+  action_item :only => :index do
+    link_to 'Import CSV', :action => 'upload_csv'
+  end
+
+  collection_action :upload_csv do
+    render "admin/csv/upload_csv"
+  end
+
+  collection_action :import_csv, :method => :post do
+    Order.import(params[:dump][:file])
+    flash[:notice] = "CSV imported successfully!"
+    redirect_to :action => :index
+  end
 
 end

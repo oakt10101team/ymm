@@ -19,10 +19,13 @@ ActiveAdmin.register Restaurant do
   index do                                              
     column :name        
     column :email        
-    column :phone  
+    column :phone
+    column "Category" do |restaurant|
+      restaurant.try(:categories).map{|cat| cat.name }.join(', ')
+    end   
     column :address             
     column :city             
-    column :state             
+    column :state           
     column :zip             
     actions                   
   end  
@@ -33,11 +36,11 @@ ActiveAdmin.register Restaurant do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :categories, collection: Category.all, :input_html => { :class => "chosen-input form-control", style: "width: 50%", :multiple => true }
       f.input :phone;
-      # f.input :categories, as: :select, collection: Category.all
       f.input :address
       f.input :city
-      f.input :state
+      f.input :state, as: :select, collection: us_states
       f.input :zip
     end
     f.actions
